@@ -1,0 +1,17 @@
+{
+  "name": "node-fs-walk-parallel",
+  "version": "0.0.0",
+  "description": "Call a function on each file in a filesystem tree",
+  "main": "lib/fs-walk-parallel.js",
+  "scripts": {
+    "lint": "eslint lib test",
+    "test": "npm run lint && tap test/*.js"
+  },
+  "author": "Eric Lathrop <eric@ericlathrop.com> (http://ericlathrop.com/)",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^0.24.0",
+    "mock-fs": "^3.0.0",
+    "tap": "^1.3.1"
+  }
+}

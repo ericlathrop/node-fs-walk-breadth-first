@@ -12,10 +12,20 @@ function setup(t, fs) {
 
 tap.test("nonexistant folder should return error", function(t) {
 	setup(t, {});
-	fsWalkParallel("/doesntExist", function() {
+	fsWalkParallel("doesntExist", function() {
 		throw "should never happen";
 	}, function(err) {
 		t.ok(err, "should have an error");
+		t.end();
+	});
+});
+
+tap.test("empty folder should return no errors", function(t) {
+	setup(t, { "folder": {} });
+	fsWalkParallel("folder", function() {
+		throw "should never happen";
+	}, function(err) {
+		t.notOk(err, "should have no errors");
 		t.end();
 	});
 });

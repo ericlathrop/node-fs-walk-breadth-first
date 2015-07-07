@@ -5,13 +5,14 @@
   "main": "lib/fs-walk-parallel.js",
   "scripts": {
     "lint": "eslint lib test",
-    "test": "npm run lint && tap test/*.js"
+    "test": "npm run lint && node test/*.js | tap-spec"
   },
   "author": "Eric Lathrop <eric@ericlathrop.com> (http://ericlathrop.com/)",
   "license": "MIT",
   "devDependencies": {
     "eslint": "^0.24.0",
     "mock-fs": "^3.0.0",
-    "tap": "^1.3.1"
+    "tap-spec": "^4.0.2",
+    "tape": "^4.0.0"
   }
 }

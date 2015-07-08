@@ -49,3 +49,15 @@ test("two files should call iterator twice with stat", function(t) {
 		t.end();
 	});
 });
+test("a nested file should call iterator", function(t) {
+	setup(t, { "folder1": { "folder2": { "file": "contents" } } });
+	t.plan(2);
+	fsWalkParallel("folder1", function(filename, stat) {
+		if (filename === "folder1/folder2/file") {
+			t.ok(stat.isFile(), "should return a fs.Stats");
+		}
+	}, function(err) {
+		t.notOk(err, "should have no errors");
+		t.end();
+	});
+});

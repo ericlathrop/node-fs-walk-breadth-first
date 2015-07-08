@@ -3,7 +3,7 @@ Call a function on each file in a filesystem tree
 
 # Example
 
-```
+```javascript
 var walk = require("fs-walk-breadth-first");
 walk(".", function(filename, stats) {
 	console.log(filename, stats.isDirectory());

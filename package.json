@@ -1,8 +1,8 @@
 {
-  "name": "node-fs-walk-parallel",
+  "name": "node-fs-walk-breadth-first",
   "version": "0.0.0",
   "description": "Call a function on each file in a filesystem tree",
-  "main": "lib/fs-walk-parallel.js",
+  "main": "lib/walk.js",
   "scripts": {
     "lint": "eslint lib test",
     "test": "npm run lint && node test/*.js | tap-spec"

@@ -1,6 +1,6 @@
 "use strict";
 
-var fsWalkParallel = require("../lib/fs-walk-parallel");
+var walk = require("../lib/walk");
 var mockFs = require("mock-fs");
 var test = require("tape");
 
@@ -12,7 +12,7 @@ function setup(t, fakeFs) {
 test("nonexistant folder should return error", function(t) {
 	setup(t, {});
 	t.plan(1);
-	fsWalkParallel("doesntExist", function() {
+	walk("doesntExist", function() {
 		throw "should never happen";
 	}, function(err) {
 		t.ok(err, "should have an error");
@@ -22,7 +22,7 @@ test("nonexistant folder should return error", function(t) {
 test("empty folder should return no errors", function(t) {
 	setup(t, { "folder": {} });
 	t.plan(1);
-	fsWalkParallel("folder", function() {
+	walk("folder", function() {
 		throw "should never happen";
 	}, function(err) {
 		t.notOk(err, "should have no errors");
@@ -32,7 +32,7 @@ test("empty folder should return no errors", function(t) {
 test("one file should call iterator once with path", function(t) {
 	setup(t, { "folder": { "file": "contents" } });
 	t.plan(2);
-	fsWalkParallel("folder", function(filename) {
+	walk("folder", function(filename) {
 		t.equal(filename, "folder/file", "should return the file's path");
 	}, function(err) {
 		t.notOk(err, "should have no errors");
@@ -42,7 +42,7 @@ test("one file should call iterator once with path", function(t) {
 test("two files should call iterator twice with stat", function(t) {
 	setup(t, { "folder": { "file1": "contents1", "file2": "contents2" } });
 	t.plan(3);
-	fsWalkParallel("folder", function(filename, stat) {
+	walk("folder", function(filename, stat) {
 		t.equal(stat.isFile(), true, "should return a fs.Stats");
 	}, function(err) {
 		t.notOk(err, "should have no errors");
@@ -52,7 +52,7 @@ test("two files should call iterator twice with stat", function(t) {
 test("a nested file should call iterator", function(t) {
 	setup(t, { "folder1": { "folder2": { "file": "contents" } } });
 	t.plan(2);
-	fsWalkParallel("folder1", function(filename, stat) {
+	walk("folder1", function(filename, stat) {
 		if (filename === "folder1/folder2/file") {
 			t.ok(stat.isFile(), "should return a fs.Stats");
 		}

@@ -4,7 +4,7 @@ Call a function on each file in a filesystem tree
 ## Example
 
 ```
-var walk = require("node-fs-walk-breadth-first");
+var walk = require("fs-walk-breadth-first");
 walk(".", function(filename, stats) {
 	console.log(filename, stats.isDirectory());
 }, function(err) {
@@ -16,10 +16,10 @@ walk(".", function(filename, stats) {
 });
 ```
 
-# Usage
+## Installation
 
 ```
-npm install --save node-fs-walk-breadth-first
+npm install --save fs-walk-breadth-first
 ```
 
 ## walk(directory, iterator, callback)

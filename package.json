@@ -1,7 +1,20 @@
 {
   "name": "fs-walk-breadth-first",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Call a function on each file in a filesystem tree",
+  "keywords": [
+    "fs",
+    "walk",
+    "util",
+    "breadth-first-search",
+    "breadth-first-traversal",
+    "bfs",
+    "find",
+    "file",
+    "directory",
+    "visit",
+    "traverse"
+  ],
   "main": "lib/walk.js",
   "scripts": {
     "lint": "eslint lib test",
@@ -9,6 +22,14 @@
   },
   "author": "Eric Lathrop <eric@ericlathrop.com> (http://ericlathrop.com/)",
   "license": "MIT",
+  "homepage": "https://github.com/ericlathrop/node-fs-walk-breadth-first",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ericlathrop/node-fs-walk-breadth-first.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ericlathrop/node-fs-walk-breadth-first/issues"
+  },
   "devDependencies": {
     "eslint": "^0.24.0",
     "mock-fs": "^3.0.0",
